@@ -38,17 +38,25 @@ If a translation is identified as having no speech error, it shall be passed as 
 Limitation
 I list the limitations on the NLP based model proposed here
 
-The underlying assumption is that only the presence of noise creates speech recognition error. However, speech text errors can also be made by various sources such as mis-pronounciations, language accent, speaker voice quality etc. This implies that the clean speech text may not always yield a good text to compare our modelled noisy texts.
-The input to RNN network only contains the previous and next words (3 word string in total). If a larger dataset is available, the bi-gram or tri-gram wording can also be included to provide more contextual information of the word and hence improve the prediction accuracy.
-To increase the accuracy of our model prediction, a much larger set of speech texts should be used. In total only 5660 unique token (words) are taken into account. For a better generalization of the model, a large volume of speech to text can be included in our modelling.
-Our model is based on one-word error presumption. As we have shown, multiple cases of errors were found, where one word could be mis-translated into multiple words and vice-versa.
-Most of the mistranslations are for prepositions and articles word that are higher in word frequency.
+1. The underlying assumption is that only the presence of noise creates speech recognition error. However, speech text errors can also be made by various sources such as mis-pronounciations, language accent, speaker voice quality etc. This implies that the clean speech text may not always yield a good text to compare our modelled noisy texts.
+
+2. The input to RNN network only contains the previous and next words (3 word string in total). If a larger dataset is available, the bi-gram or tri-gram wording can also be included to provide more contextual information of the word and hence improve the prediction accuracy.
+
+3. To increase the accuracy of our model prediction, a much larger set of speech texts should be used. In total only 5660 unique token (words) are taken into account. For a better generalization of the model, a large volume of speech to text can be included in our modelling.
+
+4. Our model is based on one-word error presumption. As we have shown, multiple cases of errors were found, where one word could be mis-translated into multiple words and vice-versa.
+
+5. Most of the mistranslations are for prepositions and articles word that are higher in word frequency.
 
 Modelling Improvements
 There are many possible ways that our NLP modelling can be improved:
 
-The process of data augmentation can be followed. We have clean audio which can be superimposed with many different noise types at various db levels. This procedure can increase the dataset size and provide more texts to train the models.
-Also, more speeches can be included in our training. The data website https://datashare.is.ed.ac.uk/handle/10283/2791 has one more set of speeches that included 58 speakers and hence a large augmented audio list can be used. Also audio clip such as story telling, podcast imposed with simulated noise can also serve to increase the word vocabulary and generalize the modelling to a wide variety of speech audios.
-Data augmentation in terms of addition rhyming words can be implemented as well. For each errored words a set of rhyming words can be inserted to increasing training data size.
-Input Subsampling with word vector (3) can be increased (5 or 7) to provide contextual and word combination information to the modelling
-With large vocabulary dataset, we can propagate our model to text recommendation model, which can help provide word correction to the speeches
+1. The process of data augmentation can be followed. We have clean audio which can be superimposed with many different noise types at various db levels. This procedure can increase the dataset size and provide more texts to train the models.
+
+2. Also, more speeches can be included in our training. The data website https://datashare.is.ed.ac.uk/handle/10283/2791 has one more set of speeches that included 58 speakers and hence a large augmented audio list can be used. Also audio clip such as story telling, podcast imposed with simulated noise can also serve to increase the word vocabulary and generalize the modelling to a wide variety of speech audios.
+
+3. Data augmentation in terms of addition rhyming words can be implemented as well. For each errored words a set of rhyming words can be inserted to increasing training data size.
+
+4. Input Subsampling with word vector (3) can be increased (5 or 7) to provide contextual and word combination information to the modelling
+
+5. With large vocabulary dataset, we can propagate our model to text recommendation model, which can help provide word correction to the speeches
